@@ -1,8 +1,11 @@
 import streamlit as st
 from math import ceil
+import requests
 import json
 
-data = json.loads('{"ORTHO Vision": {"Резус-фактор": {"707135": 200, "6904591": 3060}, "Проба Кумбса": {"707300": 400, "100-68": 200, "6904591": 3060}}}')
+url = 'https://raw.githubusercontent.com/yermenoved/olimp-calculator/main/data.json'
+file = requests.get(url)
+data = json.loads(file.text)
 
 analyzer = st.selectbox(
   'Выберите анализатор:',
@@ -20,6 +23,6 @@ table = data[analyzer][test] #load data about this specific test
 
 for element in table.keys():
   st.write('Артикул реагента/расходника:', element, 'Необходимо заявить упаковок:', ceil(amount/table[element]))
-        
+
 
 
