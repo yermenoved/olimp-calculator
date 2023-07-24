@@ -26,5 +26,5 @@ cities = {
 }
 
 for city in cities:
-    cities[city].index = range(cities[city].shape[0])
-    print(cities[city])
+    cities[city].index = cities[city]['Unnamed: 1']
+    cities[city] = cities[city][cities[city].columns[2:]]
