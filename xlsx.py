@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 df = pd.read_excel('1.xlsx')
 
@@ -29,4 +30,6 @@ for city in cities:
     cities[city].index = cities[city]['Unnamed: 1']
     cities[city] = cities[city][cities[city].columns[2:]]
 
-itogo = df.tail(1)
+
+
+
