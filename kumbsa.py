@@ -10,6 +10,7 @@ df.index = dates
 itogo = df['Итого по Столбцам'].to_frame()
 itogo['SMA'] = itogo['Итого по Столбцам'].rolling(3).mean()
 
+
 plt.plot(itogo)
 plt.xticks(rotation=45)
 plt.show()
