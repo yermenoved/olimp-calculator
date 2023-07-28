@@ -19,7 +19,7 @@ test = st.selectbox(
 
 amount = st.number_input('Введите количество:')
 
-table = data[analyzer][test] #load data about this specific test
+table = data[analyzer][test][0] #load data about this specific test
 
 for element in table.keys():
   st.write('Артикул реагента/расходника:', element, 'Необходимо заявить упаковок:', ceil(amount/table[element]))
