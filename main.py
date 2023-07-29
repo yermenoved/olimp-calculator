@@ -23,5 +23,3 @@ table = data[analyzer][test][0] #load data about this specific test
 
 for element in table.keys():
   st.write('Артикул реагента/расходника:', element, 'Необходимо заявить упаковок:', ceil(amount/table[element]))
-
-print(table, type(table))
