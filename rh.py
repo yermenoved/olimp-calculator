@@ -30,11 +30,11 @@ itogo = df['Итого по Столбцам'].to_frame()
 itogo['SMA'] = itogo['Итого по Столбцам'].rolling(3).mean()
 
 #------------Plot the kumbsa test graph (apparent seasonality)------------#
-# year_dividers = ['Январь '+str(i) for i in range(10, 24)]
-# plt.plot(itogo)
-# plt.xticks(fontsize='xx-small', rotation=90)
-# plt.vlines(year_dividers, 0, 25000, 'red', 'dotted')
-# plt.show()
+year_dividers = ['Январь '+str(i) for i in range(10, 24)]
+plt.plot(itogo)
+plt.xticks(fontsize='xx-small', rotation=90)
+plt.vlines(year_dividers, 0, 25000, 'red', 'dotted')
+plt.show()
 
 #------------Calculate the seasonality coefficient------------#
 years = {}
@@ -61,7 +61,7 @@ for i in range(12):
     stdev.append(std(coefs.loc[i,:]))
 coefs['avg'] = avg
 coefs['stdev'] = stdev
-
+# coefs.to_excel('rf_coefs.xlsx')
 #================================2023========================================#
 
 _2023 = [itogo.loc[i, 'Итого по Столбцам'] for i in itogo.index if '23' in i]
@@ -71,3 +71,5 @@ q2 = sum(_2023[3:])
 
 
 q3 = [q2*26.7/24.2, q2*26.7/24.2*sqrt((1.7/24.2)**2+(1.8/26.7)**2)]# 77792 +- 7574
+current_jan = _2023[0]
+print(current_jan)
